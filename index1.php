@@ -1,5 +1,6 @@
 <?php
 include("include/connect.php");
+session_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -20,6 +21,9 @@ include("include/connect.php");
    <tr>
     <td><?php include("header.php"); ?></td>
   </tr>
+  	<?php
+		if ($_SESSION['ses_username']!=""){	
+	?>
   <tr>
     <td>
       <div id='cssmenu'>
@@ -44,13 +48,26 @@ include("include/connect.php");
    <li><a href='index2.php' target = "_blank" ><span>ข้อมูลจำนวนนักเรียน</span></a></li>
    <li class='last'><a href='contact/index.php' target = "_blank"><span>ข้อมูลผู้ประสานงานโรงเรียน</span></a></li>
    <li class='last'><a href='changpass.php' target = "_blank"><span>เปลี่ยนรหัสผ่าน</span></a></li>
+   <?php
+   if($_SESSION['ses_username']=="56010000"){	
+   	echo "<li class='last'><a href='dmc/index.php' target = \"_blank\"><span>ข้อมูลนักเรียนรายบุคคล</span></a></li>";
+   }
+   ?>
    <li class='last'><a href='logout.php' ><span>ออกจากระบบ</span></a></li>
 </ul>
 </div>
     </td>
   </tr>
+  <?php
+	}else{
+		$message = "ไม่สามารถทำงานได้ เนื่องจากยังไม่ได้ Login หรือไม่ผ่านการทดสอบสิทธิ์ในการเข้าใช้งาน";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
+		} 
+mysql_close($Conn); 
+	?>
   <tr>
-    <td height="59"><br><br><br><br><br><br><br><br><br><?php include ("footer.php"); ?></td>
+    <td height="59"><?php include ("footer.php"); ?></td>
   </tr>
   </table>
 </center>
