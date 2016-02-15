@@ -15,7 +15,7 @@ session_start();
 </style>
 </head>
 <body>
-<form action="weightReport.php" method="post" enctype="multipart/form-data" name="form1">
+<form action="weightReport.php" method="post" enctype="multipart/form-data" name="form1" id="form1" target="ifrm">
 <div align="center">
 <?php
 		if ($_SESSION['ses_username']!=""){	
@@ -35,18 +35,34 @@ session_start();
 	<tr>
 		<td><div align="right">โรงเรียน : </div></td>
 		<td><input type="text" name="txtschool" id="" value=""/></td>
-		<td>เลขประจำตัวนักเรียน : </td>
+		<td><div align="right">เลขประจำตัวนักเรียน : </div></td>
 		<td><input type="text" name="txtstudentID" id="" value=""/></td>
 	</tr>
   	<tr>
-		<td>เลขประจำตัวประชาชน : </td>
+		<td><div align="right">เลขประจำตัวประชาชน : </div></td>
 		<td><input type="text" name="txtempID" id="" value=""/></td>
 		<td></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td><div align="right">ชั้น : </div></td>
-		<td><input type="text" name="txtclass" id="" value=""/></td>
+		<td>
+		<select name="txtclass">
+			<option value="">------เลือกชั้น---------</option>
+			<option value="อ.3 ขวบ">อ.3 ขวบ</option>
+			<option value="อ.1">อ.1</option>
+			<option value="อ.2">อ.2</option>
+			<option value="ป.1">ป.1</option>
+			<option value="ป.2">ป.2</option>
+			<option value="ป.3">ป.3</option>
+			<option value="ป.4">ป.4</option>
+			<option value="ป.5">ป.5</option>
+			<option value="ป.6">ป.6</option>
+			<option value="ม.1">ม.1</option>
+			<option value="ม.2">ม.2</option>
+			<option value="ม.3">ม.3</option>
+		</select>
+		</td>
 		<td><div align="right">ห้อง : </div></td>
 		<td><input type="text" name="txtroom" id="" value=""/></td>
 	</tr>
@@ -70,6 +86,9 @@ session_start();
 	</tr>
 	<tr>
 		<td colspan="4"><div align="center"><input type="submit" name="Submit" value="ค้นหาข้อมูล" /></div></td>
+	</tr>
+	<tr>
+		<td colspan="4"><div align="center"><iframe id="iframe_target" name="ifrm" src="#" height="100%" width="900" scrolling="no" frameborder="no"></iframe></div></td>
 	</tr>
 </table>
 </table>

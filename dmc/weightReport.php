@@ -24,50 +24,60 @@ $endHeight = $_POST["txtendHeight"];
 <div align="center">
 <?php
 $strSQL = "SELECT * FROM dmc WHERE 1 ";
-	if($school !='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
+	if($school !='' ){
 			$strSQL .= " AND schoolName LIKE '%".$school."%'";
-		}else if($school =='' and $studentID !='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
-			$strSQL .= " AND studentID LIKE '%".$studentID."%' ";
-		}else if($school =='' and $studentID =='' and $empID !='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
-			$strSQL .= " AND empID LIKE '%".$empID."%' ";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class !='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
+		}
+		if($studentID !=''){
+			$strSQL .= " AND studentID = '".$studentID."'";
+		}
+		if($empID !=''){
+			$strSQL .= " AND empID = '".$empID."'";
+		}
+		if($class !=''){
 			$strSQL .= " AND class = '".$class."'";
-		}else if($school !='' and $studentID =='' and $empID =='' and $class !='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
-			$strSQL .= " AND schoolName LIKE '%".$school."%' AND class = '".$class."'";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room !=''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
-			$strSQL .= " AND room LIKE '%".$room."%' ";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent !=''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
+		}
+		if($room !=''){
+			$strSQL .= " AND room = '".$room."'";
+		}
+		if($Nstudent !=''){
 			$strSQL .= " AND Nstudent LIKE '%".$Nstudent."%' ";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent !=''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
+		}
+		if($Lstudent !=''){
 			$strSQL .= " AND Lstudent LIKE '%".$Lstudent."%' ";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight !=''and $endWeight ==''and $beginHeight ==''and $endHeight ==''){
+		}
+		if($beginWeight !=''){
 			$strSQL .= " AND Weight >= ".$beginWeight."";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight !=''and $endHeight ==''){
+		}
+		if($beginHeight !=''){
 			$strSQL .= " AND height >= ".$beginHeight."";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight !=''and $beginHeight ==''and $endHeight ==''){
+		}
+		if($endWeight !=''){
 			$strSQL .= " AND Weight <= ".$endWeight."";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight ==''and $endHeight !=''){
+		}
+		if($endHeight !=''){
 			$strSQL .= " AND height <= ".$endHeight."";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight !=''and $endWeight !=''and $beginHeight ==''and $endHeight ==''){
+		}
+		if($beginWeight !=''and $endWeight !=''){
 			$strSQL .= " AND Weight BETWEEN ".$beginWeight." AND ".$endWeight."";
-		}else if($school =='' and $studentID =='' and $empID =='' and $class =='' and $room ==''and $Nstudent ==''and $Lstudent ==''and $beginWeight ==''and $endWeight ==''and $beginHeight !=''and $endHeight !=''){
+		}
+		if($beginHeight !=''and $endHeight !=''){
 			$strSQL .= " AND height BETWEEN ".$beginHeight." AND ".$endHeight."";
 		}
 		$strSQL .= " ORDER BY `schoolID` ASC";
-		echo $strSQL;
+		//echo $strSQL;
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 
-echo "$school = ". $_POST["txtschool"].
+/*echo "school = ". $_POST["txtschool"].
 "$studentID = ".$_POST["txtstudentID"].
 "$empID = ".$_POST["txtempID"].
-"$class = ".$_POST["txtclass"].
+"class = ".$_POST["txtclass"].
 "$room = ".$_POST["txtroom"].
 "$Nstudent = ".$_POST["txtNstudent"].
 "$Lstudent = ".$_POST["txtLstudent"].
 "$beginWeight = ".$_POST["txtbeginWeight"].
 "$endWeight = ".$_POST["txtendWeight"].
 "$beginHeight = ".$_POST["txtbeginHeight"].
-"$endHeight = ".$_POST["txtendHeight"];
+"$endHeight = ".$_POST["txtendHeight"];*/
 ?>
 <table border="1" bordercolor="#000000" style="border-collapse:collapse;" >
 	<tr>
