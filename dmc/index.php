@@ -30,10 +30,12 @@ session_start();
   <tr>
   	<td><div align="center">นำเข้าข้อมูลนักเรียนรายบุคคล<br><br></div></td>
   </tr>
+<table border="1">
   <tr>
   	<td><div align="center"><input name="fileCSV" type="file" id="fileCSV">
   		<input name="btnSubmit" type="submit" id="btnSubmit" value="Upload"></div></td>
   </tr>
+</table>
 </table>
 <?php
 }else{
