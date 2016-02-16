@@ -1,0 +1,24 @@
+<?php
+echo $_POST["poorBookFlag"]."------".$_POST["poorFoodFlag"]."------".$_POST["poorStationeryFlag"]."------".$_POST["poorUniformFlag"];
+if ($_POST["poorBookFlag"]=='true') {
+	$poorBookFlag = '/' ;
+}else{
+	$poorBookFlag = '' ;
+}
+if ($_POST["poorFoodFlag"]=='true') {
+	$poorFoodFlag = '/' ;
+}else{
+	$poorFoodFlag = '' ;
+}
+if ($_POST["poorStationeryFlag"]=='true') {
+	$poorStationeryFlag = '/' ;
+}else{
+	$poorStationeryFlag = '' ;
+}
+if ($_POST["poorUniformFlag"]=='true') {
+	$poorUniformFlag = '/' ;
+}else{
+	$poorUniformFlag = '' ;
+}
+echo "<br>".$poorBookFlag."<br>".$poorFoodFlag."<br>".$poorStationeryFlag."<br>".$poorUniformFlag;
+?>

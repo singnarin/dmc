@@ -1,0 +1,18 @@
+<?php
+include("../include/connect.php");
+session_start();
+
+$school = $_POST["txtschool"];
+$studentID = $_POST["txtstudentID"];
+$empID = $_POST["txtempID"];
+$class = $_POST["txtclass"];
+$room = $_POST["txtroom"];
+$Nstudent = $_POST["txtNstudent"];
+$Lstudent = $_POST["txtLstudent"];
+$beginWeight = $_POST["txtbeginWeight"];
+$endWeight = $_POST["txtendWeight"];
+$beginHeight = $_POST["txtbeginHeight"];
+$endHeight = $_POST["txtendHeight"]; 
+
+echo $school . $studentID . $empID . $class . $room . $Nstudent . $Lstudent . $beginWeight . $endWeight . $beginHeight . $endHeight ;
+?>

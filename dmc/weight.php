@@ -7,15 +7,68 @@ session_start();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
+<script language="javascript"> 
+  var obj = new createobject(); 
+   
+  function createobject(Mode) { 
+  var XMLHttp = false ; 
+  if (window.XMLHttpRequest) { 
+    XMLHttp = new XMLHttpRequest() ; 
+  } else if (window.ActiveXobject) { 
+    XMLHttp = new ActiveXobject("Microsoft.XMLHTTP") ;   
+  } else { 
+    alert ("Browser ไม่สามารถรองรับการท างาน Ajax ได้") ;    
+  } 
+  return XMLHttp ; 
+  } 
+   
+  function getData() { 
+  if(obj) { 
+   var url = "weightReport.php"; 
+   var area = document.getElementById("show") ; 
+   var params =  "txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&txtbeginWeight=" + document.getElementById("txtbeginWeight").value + "&txtendWeight=" + document.getElementById("txtendWeight").value + "&txtbeginHeight=" + document.getElementById("txtbeginHeight").value + "&txtendHeight=" + document.getElementById("txtendHeight").value ; 
+     
+    obj.open("POST", url, true) ; 
+    obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
+    obj.setRequestHeader("Content-length", params.length); 
+    obj.setRequestHeader("Connection","close");  
+    obj.send(params) ;  
+ 
+    obj.onreadystatechange = function() { 
+    if (obj.readyState == 3 ){ 
+      area.innerHTML = "กาลังโหลดข้อมูล..." ;   
+    } 
+      if (obj.readyState == 4 ) { 
+        area.innerHTML = obj.responseText ; 
+        document.getElementById("txtschool").value = '' ; 
+        document.getElementById("txtstudentID").value = '' ;
+        document.getElementById("txtempID").value = '' ;
+        document.getElementById("txtclass").value = '' ;
+        document.getElementById("txtroom").value = '' ;
+        document.getElementById("txtNstudent").value = '' ;
+        document.getElementById("txtLstudent").value = '' ;
+        document.getElementById("txtbeginWeight").value = '' ;
+        document.getElementById("txtendWeight").value = '' ;
+        document.getElementById("txtbeginHeight").value = '' ;
+        document.getElementById("txtendHeight").value = '' ;
+     } 
+    } 
+  }   
+  } 
+</script>
 <style type="text/css">
-<?php include("include/button.css");?>
+<?php 
+include("include/button.css");
+include("css/stylesheet.css");
+?>
 <!--
 .style2 {font-size: 14px}
 -->
 </style>
 </head>
-<body>
-<form action="weightReport.php" method="post" enctype="multipart/form-data" name="form1" id="form1" target="ifrm">
+<body onload="createobject('List')"> 
+<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" target="ifrm"> 
+<!--<form action="weightReport.php" method="post" enctype="multipart/form-data" name="form1" id="form1" target="ifrm">-->
 <div align="center">
 <?php
 		if ($_SESSION['ses_username']!=""){	
@@ -28,26 +81,26 @@ session_start();
   	<td><?php include("cssmenu/index.html");?><br><br></td>
   </tr>
   <tr>
-  	<td><div align="center">ข้อมูลนักเรียนรายบุคคลจำแนกตามน้ำหนัก,ส่วนสูง<br><br></div></td>
+  	<td><div align="center"><h4>ข้อมูลนักเรียนรายบุคคลจำแนกตามน้ำหนัก,ส่วนสูง</h4></div></td>
   </tr>
 <table border="0">
- <!--width="900" border="1" bordercolor="#000000" style="border-collapse:collapse;"-->
+
 	<tr>
 		<td><div align="right">โรงเรียน : </div></td>
-		<td><input type="text" name="txtschool" id="" value=""/></td>
+		<td><input type="text" name="txtschool" id="txtschool" value=""/></td>
 		<td><div align="right">เลขประจำตัวนักเรียน : </div></td>
-		<td><input type="text" name="txtstudentID" id="" value=""/></td>
+		<td><input type="text" name="txtstudentID" id="txtstudentID" value=""/></td>
 	</tr>
   	<tr>
 		<td><div align="right">เลขประจำตัวประชาชน : </div></td>
-		<td><input type="text" name="txtempID" id="" value=""/></td>
+		<td><input type="text" name="txtempID" id="txtempID" value=""/></td>
 		<td></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td><div align="right">ชั้น : </div></td>
 		<td>
-		<select name="txtclass">
+		<select name="txtclass" id = "txtclass">
 			<option value="">------เลือกชั้น---------</option>
 			<option value="อ.3 ขวบ">อ.3 ขวบ</option>
 			<option value="อ.1">อ.1</option>
@@ -64,34 +117,35 @@ session_start();
 		</select>
 		</td>
 		<td><div align="right">ห้อง : </div></td>
-		<td><input type="text" name="txtroom" id="" value=""/></td>
+		<td><input type="text" name="txtroom" id="txtroom" value=""/></td>
 	</tr>
 	<tr>
 		<td><div align="right">ชื่อ : </div></td>
-		<td><input type="text" name="txtNstudent" id="" value=""/></td>
+		<td><input type="text" name="txtNstudent" id="txtNstudent" value=""/></td>
 		<td><div align="right">นามสกุล : </div></td>
-		<td><input type="text" name="txtLstudent" id="" value=""/></td>
+		<td><input type="text" name="txtLstudent" id="txtLstudent" value=""/></td>
 	</tr>
 	<tr>
 		<td><div align="right">ช่วงน้ำหนัก : </div></td>
-		<td><input type="text" name="txtbeginWeight" id="" value=""/> กก.</td>
+		<td><input type="text" name="txtbeginWeight" id="txtbeginWeight" value=""/> กก.</td>
 		<td><div align="right">ถึง : </div></td>
-		<td><input type="text" name="txtendWeight" id="" value=""/> กก.</td>
+		<td><input type="text" name="txtendWeight" id="txtendWeight" value=""/> กก.</td>
 	</tr>
 	<tr>
 		<td><div align="right">ช่วงส่วนสูง : </div></td>
-		<td><input type="text" name="txtbeginHeight" id="" value=""/> ซม.</td>
+		<td><input type="text" name="txtbeginHeight" id="txtbeginHeight" value=""/> ซม.</td>
 		<td><div align="right">ถึง : </div></td>
-		<td><input type="text" name="txtendHeight" id="" value=""/> ซม.</td>
+		<td><input type="text" name="txtendHeight" id="txtendHeight" value=""/> ซม.</td>
 	</tr>
 	<tr>
-		<td colspan="4"><div align="center"><input type="submit" name="Submit" value="ค้นหาข้อมูล" /></div></td>
-	</tr>
-	<tr>
-		<td colspan="4"><div align="center"><iframe id="iframe_target" name="ifrm" src="#" height="100%" width="900" scrolling="no" frameborder="no"></iframe></div></td>
+		<td colspan="4"><div align="center"><input type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
+		<!--<iframe id="iframe_target" name="ifrm" src="#" height="100%" width="900" scrolling="no" frameborder="no"></iframe>
+		--></div></td>
+		<iframe name='ifrm' style='display:none' ></iframe> 
 	</tr>
 </table>
 </table>
+<div id="show"></div>
 <?php
 }else{
 		$message = "ไม่สามารถทำงานได้ เนื่องจากยังไม่ได้ Login หรือไม่ผ่านการทดสอบสิทธิ์ในการเข้าใช้งาน";

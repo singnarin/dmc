@@ -9,10 +9,27 @@ $class = $_POST["txtclass"];
 $room = $_POST["txtroom"];
 $Nstudent = $_POST["txtNstudent"];
 $Lstudent = $_POST["txtLstudent"];
-$beginWeight = $_POST["txtbeginWeight"];
-$endWeight = $_POST["txtendWeight"];
-$beginHeight = $_POST["txtbeginHeight"];
-$endHeight = $_POST["txtendHeight"];
+$disadvantaged = $_POST["txtdisadvantaged"];
+if ($_POST["poorBookFlag"]=='true') {
+	$poorBookFlag = '/' ;
+}else{
+	$poorBookFlag = '' ;
+}
+if ($_POST["poorFoodFlag"]=='true') {
+	$poorFoodFlag = '/' ;
+}else{
+	$poorFoodFlag = '' ;
+}
+if ($_POST["poorStationeryFlag"]=='true') {
+	$poorStationeryFlag = '/' ;
+}else{
+	$poorStationeryFlag = '' ;
+}
+if ($_POST["poorUniformFlag"]=='true') {
+	$poorUniformFlag = '/' ;
+}else{
+	$poorUniformFlag = '' ;
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45,24 +62,22 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		if($Lstudent !=''){
 			$strSQL .= " AND Lstudent LIKE '%".$Lstudent."%' ";
 		}
-		if($beginWeight !=''){
-			$strSQL .= " AND Weight >= ".$beginWeight."";
+		if($disadvantaged !=''){
+			$strSQL .= " AND disadvantaged LIKE '%".$disadvantaged."%' ";
 		}
-		if($beginHeight !=''){
-			$strSQL .= " AND height >= ".$beginHeight."";
+		if($poorBookFlag !=''){
+			$strSQL .= " AND textbooks = '/'";
 		}
-		if($endWeight !=''){
-			$strSQL .= " AND Weight <= ".$endWeight."";
+		if($poorFoodFlag !=''){
+			$strSQL .= " AND Lunch = '/'";
 		}
-		if($endHeight !=''){
-			$strSQL .= " AND height <= ".$endHeight."";
+		if($poorStationeryFlag !=''){
+			$strSQL .= " AND stationery ='/'";
 		}
-		if($beginWeight !=''and $endWeight !=''){
-			$strSQL .= " AND Weight BETWEEN ".$beginWeight." AND ".$endWeight."";
+		if($poorUniformFlag !=''){
+			$strSQL .= " AND uniform = '/'";
 		}
-		if($beginHeight !=''and $endHeight !=''){
-			$strSQL .= " AND height BETWEEN ".$beginHeight." AND ".$endHeight."";
-		}
+		
 		$strSQL .= " ORDER BY `schoolID` ASC";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
@@ -77,8 +92,11 @@ $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 		<th>คำนำหน้าชื่อ</th>
 		<th>ชื่อ</th>
 		<th>นามสกุล</th>
-		<th>น้ำหนัก</th>
-		<th>ส่วนสูง</th>
+		<th>ความด้อยโอกาส</th>
+		<th>ขาดแคลนแบบเรียน</th>
+		<th>ขาดแคลนอาหารกลางวัน</th>
+		<th>ขาดแคลนเครื่องเขียน</th>
+		<th>ขาดแคลนเครื่องแบบ</th>
 	</tr>
 <?php
 $i = 1 ;
@@ -95,8 +113,11 @@ while($objResult = mysql_fetch_array($objQuery))
 		<td><?php echo $objResult['Tstudent'];?></td>
 		<td><?php echo $objResult['Nstudent'];?></td>
 		<td><?php echo $objResult['Lstudent'];?></td>
-		<td><?php echo $objResult['Weight'];?></td>
-		<td><?php echo $objResult['height'];?></td>
+		<td><?php echo $objResult['disadvantaged'];?></td>
+		<td><?php echo $objResult['textbooks'];?></td>
+		<td><?php echo $objResult['Lunch'];?></td>
+		<td><?php echo $objResult['stationery'];?></td>
+		<td><?php echo $objResult['uniform'];?></td>
 	</tr>
 <?php
 	$i++;
