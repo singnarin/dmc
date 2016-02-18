@@ -1,29 +1,33 @@
 <?php
 include("../include/connect.php");
 session_start();
+header("Content-Type: application/vnd.ms-excel");
+$date = date("Y-m-d");
+header('Content-Disposition: attachment; filename="'.$date.'.xls"');
 
-$school = $_POST["txtschool"];
-$studentID = $_POST["txtstudentID"];
-$empID = $_POST["txtempID"];
-$class = $_POST["txtclass"];
-$room = $_POST["txtroom"];
-$Nstudent = $_POST["txtNstudent"];
-$Lstudent = $_POST["txtLstudent"];
-$travel = $_POST["txttravel"];
-$beginTime = $_POST["txtbeginTime"];
-$beginGravel = $_POST["txtbeginGravel"];
-$beginpaved = $_POST["txtbeginpaved"];
-$beginwater = $_POST["txtbeginwater"];
-$endTime = $_POST["txtendTime"];
-$endGraval = $_POST["txtendGravel"];
-$endpaved = $_POST["txtendpaved"];
-$endwater = $_POST["txtendwater"];
+$school = $_GET["txtschool"];
+$studentID = $_GET["txtstudentID"];
+$empID = $_GET["txtempID"];
+$class = $_GET["txtclass"];
+$room = $_GET["txtroom"];
+$Nstudent = $_GET["txtNstudent"];
+$Lstudent = $_GET["txtLstudent"];
+$travel = $_GET["txttravel"];
+$beginTime = $_GET["txtbeginTime"];
+$beginGravel = $_GET["txtbeginGravel"];
+$beginpaved = $_GET["txtbeginpaved"];
+$beginwater = $_GET["txtbeginwater"];
+$endTime = $_GET["txtendTime"];
+$endGraval = $_GET["txtendGravel"];
+$endpaved = $_GET["txtendpaved"];
+$endwater = $_GET["txtendwater"];
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
 </head>
@@ -94,7 +98,7 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		$strSQL .= " ORDER BY `schoolID` ASC";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
-<table class="table table-bordered" >
+<table border="1" bordercolor="#0000ff" style="border-collapse:collapse;" >
 	<tr>
 		<th>ลำดับ</th>
 		<th>โรงเรียน</th>
@@ -139,7 +143,5 @@ mysql_close($Conn);
 ?>
 </table>
 </div>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

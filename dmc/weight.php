@@ -7,6 +7,7 @@ session_start();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <script language="javascript"> 
   var obj = new createobject(); 
    
@@ -54,7 +55,11 @@ session_start();
      } 
     } 
   }   
-  } 
+  }
+
+  function ExportData() { 
+   window.location =  "weightExport.php?txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&txtbeginWeight=" + document.getElementById("txtbeginWeight").value + "&txtendWeight=" + document.getElementById("txtendWeight").value + "&txtbeginHeight=" + document.getElementById("txtbeginHeight").value + "&txtendHeight=" + document.getElementById("txtendHeight").value ;  
+  }
 </script>
 <style type="text/css">
 <?php 
@@ -78,7 +83,7 @@ include("css/stylesheet.css");
     <td><?php include("header.php"); ?></td>
   </tr>
   <tr>
-  	<td><?php include("cssmenu/index.html");?><br><br></td>
+  	<td><?php include("cssmenu/index.html");?></td>
   </tr>
   <tr>
   	<td><div align="center"><h4>ข้อมูลนักเรียนรายบุคคลจำแนกตามน้ำหนัก,ส่วนสูง</h4></div></td>
@@ -138,7 +143,9 @@ include("css/stylesheet.css");
 		<td><input type="text" name="txtendHeight" id="txtendHeight" value=""/> ซม.</td>
 	</tr>
 	<tr>
-		<td colspan="4"><div align="center"><input type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
+		<td colspan="4"><div align="center">
+		<input class="btn btn-primary" type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
+		<input class="btn btn-primary" type="button" name="button" id="button" value="นำออกข้อมูล" onclick="ExportData()" />
 		<!--<iframe id="iframe_target" name="ifrm" src="#" height="100%" width="900" scrolling="no" frameborder="no"></iframe>
 		--></div></td>
 		<iframe name='ifrm' style='display:none' ></iframe> 
@@ -156,5 +163,7 @@ mysql_close($Conn);
 ?>
 </div>
 </form>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

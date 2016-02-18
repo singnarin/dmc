@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
 <script language="javascript"> 
@@ -52,6 +53,9 @@ session_start();
     } 
   }   
   } 
+  function ExportData() { 
+   window.location =  "bedroomExport.php?txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&txtbedroom=" + document.getElementById("txtbedroom").value ;  
+  }
 </script>
 <style type="text/css">
 <?php 
@@ -75,7 +79,7 @@ include("css/stylesheet.css");
     <td><?php include("header.php"); ?></td>
   </tr>
   <tr>
-  	<td><?php include("cssmenu/index.html");?><br><br></td>
+  	<td><?php include("cssmenu/index.html");?></td>
   </tr>
   <tr>
   	<td><div align="center"><h4>ข้อมูลนักเรียนรายบุคคลจำแนกตามประเภทที่พักนอน</h4></div></td>
@@ -141,9 +145,10 @@ include("css/stylesheet.css");
 		<td></td>
 	</tr>
 	<tr>
-		<td colspan="4"><br><div align="center"><input type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
-		<!--<iframe id="iframe_target" name="ifrm" src="#" height="100%" width="900" scrolling="no" frameborder="no"></iframe>
-		--></div></td>
+		<td colspan="4"><br><div align="center">
+		<input class="btn btn-primary" type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
+		<input class="btn btn-primary" type="button" name="button" id="button" value="นำออกข้อมูล" onclick="ExportData()" />
+		</div></td>
 		<iframe name='ifrm' style='display:none' ></iframe> 
 	</tr>
 </table>
@@ -159,5 +164,7 @@ mysql_close($Conn);
 ?>
 </div>
 </form>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

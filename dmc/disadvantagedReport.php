@@ -34,6 +34,7 @@ if ($_POST["poorUniformFlag"]=='true') {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
 </head>
@@ -81,7 +82,7 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		$strSQL .= " ORDER BY `schoolID` ASC";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
-<table border="1" bordercolor="#0000ff" style="border-collapse:collapse;" >
+<table class="table table-bordered" >
 	<tr>
 		<th>ลำดับ</th>
 		<th>โรงเรียน</th>
@@ -126,5 +127,7 @@ mysql_close($Conn);
 ?>
 </table>
 </div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

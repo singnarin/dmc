@@ -1,20 +1,45 @@
 <?php
 include("../include/connect.php");
 session_start();
+header("Content-Type: application/vnd.ms-excel");
+$date = date("Y-m-d");
+header('Content-Disposition: attachment; filename="'.$date.'.xls"');
 
-$school = $_POST["txtschool"];
-$studentID = $_POST["txtstudentID"];
-$empID = $_POST["txtempID"];
-$class = $_POST["txtclass"];
-$room = $_POST["txtroom"];
-$Nstudent = $_POST["txtNstudent"];
-$Lstudent = $_POST["txtLstudent"];
-$bedroom = $_POST["txtbedroom"];
+$school = $_GET["txtschool"];
+$studentID = $_GET["txtstudentID"];
+$empID = $_GET["txtempID"];
+$class = $_GET["txtclass"];
+$room = $_GET["txtroom"];
+$Nstudent = $_GET["txtNstudent"];
+$Lstudent = $_GET["txtLstudent"];
+$disadvantaged = $_GET["txtdisadvantaged"];
+if ($_GET["poorBookFlag"]=='true') {
+	$poorBookFlag = '/' ;
+}else{
+	$poorBookFlag = '' ;
+}
+if ($_GET["poorFoodFlag"]=='true') {
+	$poorFoodFlag = '/' ;
+}else{
+	$poorFoodFlag = '' ;
+}
+if ($_GET["poorStationeryFlag"]=='true') {
+	$poorStationeryFlag = '/' ;
+}else{
+	$poorStationeryFlag = '' ;
+}
+if ($_GET["poorUniformFlag"]=='true') {
+	$poorUniformFlag = '/' ;
+}else{
+	$poorUniformFlag = '' ;
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
 </head>
@@ -43,14 +68,26 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		if($Lstudent !=''){
 			$strSQL .= " AND Lstudent LIKE '%".$Lstudent."%' ";
 		}
-		if($bedroom !=''){
-			$strSQL .= " AND bedroom LIKE '%".$bedroom."%' ";
+		if($disadvantaged !=''){
+			$strSQL .= " AND disadvantaged LIKE '%".$disadvantaged."%' ";
+		}
+		if($poorBookFlag !=''){
+			$strSQL .= " AND textbooks = '/'";
+		}
+		if($poorFoodFlag !=''){
+			$strSQL .= " AND Lunch = '/'";
+		}
+		if($poorStationeryFlag !=''){
+			$strSQL .= " AND stationery ='/'";
+		}
+		if($poorUniformFlag !=''){
+			$strSQL .= " AND uniform = '/'";
 		}
 		
 		$strSQL .= " ORDER BY `schoolID` ASC";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
-<table class="table table-bordered">
+<table border="1" bordercolor="#0000ff" style="border-collapse:collapse;" >
 	<tr>
 		<th>ลำดับ</th>
 		<th>โรงเรียน</th>
@@ -61,7 +98,11 @@ $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 		<th>คำนำหน้าชื่อ</th>
 		<th>ชื่อ</th>
 		<th>นามสกุล</th>
-		<th>ที่พักนอน</th>
+		<th>ความด้อยโอกาส</th>
+		<th>ขาดแคลนแบบเรียน</th>
+		<th>ขาดแคลนอาหารกลางวัน</th>
+		<th>ขาดแคลนเครื่องเขียน</th>
+		<th>ขาดแคลนเครื่องแบบ</th>
 	</tr>
 <?php
 $i = 1 ;
@@ -78,7 +119,11 @@ while($objResult = mysql_fetch_array($objQuery))
 		<td><?php echo $objResult['Tstudent'];?></td>
 		<td><?php echo $objResult['Nstudent'];?></td>
 		<td><?php echo $objResult['Lstudent'];?></td>
-		<td><?php echo $objResult['bedroom'];?></td>
+		<td><?php echo $objResult['disadvantaged'];?></td>
+		<td><?php echo $objResult['textbooks'];?></td>
+		<td><?php echo $objResult['Lunch'];?></td>
+		<td><?php echo $objResult['stationery'];?></td>
+		<td><?php echo $objResult['uniform'];?></td>
 	</tr>
 <?php
 	$i++;
@@ -87,7 +132,5 @@ mysql_close($Conn);
 ?>
 </table>
 </div>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

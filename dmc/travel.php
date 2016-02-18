@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
 <script language="javascript"> 
@@ -60,6 +61,9 @@ session_start();
     } 
   }   
   } 
+  function ExportData() { 
+   window.location =  "travelExport.php?txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&txttravel=" + document.getElementById("txttravel").value + "&txtbeginTime=" + document.getElementById("txtbeginTime").value + "&txtbeginGravel=" + document.getElementById("txtbeginGravel").value + "&txtbeginpaved=" + document.getElementById("txtbeginpaved").value + "&txtbeginwater=" + document.getElementById("txtbeginwater").value + "&txtendTime=" + document.getElementById("txtendTime").value + "&txtendGravel=" + document.getElementById("txtendGravel").value + "&txtendpaved=" + document.getElementById("txtendpaved").value + "&txtendwater=" + document.getElementById("txtendwater").value ;  
+  }
 </script>
 <style type="text/css">
 <?php 
@@ -73,7 +77,6 @@ include("css/stylesheet.css");
 </head>
 <body onload="createobject('List')"> 
 <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1" target="ifrm"> 
-<!--<form action="weightReport.php" method="post" enctype="multipart/form-data" name="form1" id="form1" target="ifrm">-->
 <div align="center">
 <?php
 		if ($_SESSION['ses_username']!=""){	
@@ -83,10 +86,10 @@ include("css/stylesheet.css");
     <td><?php include("header.php"); ?></td>
   </tr>
   <tr>
-  	<td><?php include("cssmenu/index.html");?><br><br></td>
+  	<td><?php include("cssmenu/index.html");?></td>
   </tr>
   <tr>
-  	<td><div align="center"><h4>ข้อมูลนักเรียนรายบุคคลจำแนกตามน้ำหนัก,ส่วนสูง</h4></div></td>
+  	<td><div align="center"><h4>ข้อมูลนักเรียนรายบุคคลจำแนกตามการเดินทาง</h4></div></td>
   </tr>
 <table border="0">
 
@@ -131,11 +134,11 @@ include("css/stylesheet.css");
 		<td><input type="text" name="txtLstudent" id="txtLstudent" value=""/></td>
 	</tr>
 	<tr>
-		<td>การเดินทาง</td>
+		<td><div align="right">การเดินทาง</div></td>
 		<td>
 		<select name="txttravel" id="txttravel">
 			<option value=""></option>
-			<option value="เดินเท้า" selected>เดินเท้า</option>
+			<option value="เดินเท้า">เดินเท้า</option>
         	<option value="พาหนะไม่เสียค่าโดยสาร">พาหนะไม่เสียค่าโดยสาร</option>
         	<option value="พาหนะเสียค่าโดยสาร">พาหนะเสียค่าโดยสาร</option>
         	<option value="จักรยานยืมเรียน">จักรยานยืมเรียน</option>
@@ -169,9 +172,10 @@ include("css/stylesheet.css");
 		<td><input type="text" name="txtendwater" id="txtendwater" value=""/> เมตร</td>
 	</tr>
 	<tr>
-		<td colspan="4"><div align="center"><input type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
-		<!--<iframe id="iframe_target" name="ifrm" src="#" height="100%" width="900" scrolling="no" frameborder="no"></iframe>
-		--></div></td>
+		<td colspan="4"><div align="center">
+		<input class="btn btn-primary" type="button" name="button" id="button" value="ค้นหาข้อมูล" onclick="getData()" />
+		<input class="btn btn-primary" type="button" name="button" id="button" value="นำออกข้อมูล" onclick="ExportData()" />
+		</div></td>
 		<iframe name='ifrm' style='display:none' ></iframe> 
 	</tr>
 </table>
@@ -187,5 +191,7 @@ mysql_close($Conn);
 ?>
 </div>
 </form>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

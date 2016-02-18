@@ -12,13 +12,9 @@ session_start();
 <?php
 
 if ($_SESSION['ses_username']!=""){	
-
-
-
 move_uploaded_file($_FILES["fileCSV"]["tmp_name"],'D:\xampp\htdocs\dmc\dmc\Upload\\'.$_FILES["fileCSV"]["name"]); // Copy/Upload CSV
 
 $objCSV = fopen('Upload\\'.$_FILES["fileCSV"]["name"], "r");
-echo  $_FILES["fileCSV"];
 while (($objArr = fgetcsv($objCSV, 3000, ",")) !== FALSE) {
 
 	$sel_dmc = mysql_query("SELECT * FROM `dmc` WHERE `empID` = '".$objArr[2]."'");
@@ -42,7 +38,6 @@ fclose($objCSV);
 $message = "นำเข้าข้อมูลนักเรียนรายบุคคลสำเร็จ";
 		echo "<script type='text/javascript'>alert('$message');</script>";
 		echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
-	
 }else{
 		$message = "ไม่สามารถทำงานได้ เนื่องจากยังไม่ได้ Login หรือไม่ผ่านการทดสอบสิทธิ์ในการเข้าใช้งาน";
 		echo "<script type='text/javascript'>alert('$message');</script>";

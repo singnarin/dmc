@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<form action="disadvantagedReport.php" method="post"  name="form1" id="form1"> 
-	<table>
-	<tr>
-		<td colspan="2"><input name="poorBookFlag" id="poorBookFlag" type="checkbox" value="/" />ขาดแคลนแบบเรียน</td>
-		<td colspan="2"><input name="poorFoodFlag" id="poorFoodFlag" type="checkbox" value="/" />ขาดแคลนอาหารกลางวัน</td></td>
-	</tr>
-	<tr>
-		<td colspan="2"><input name="poorStationeryFlag" id="poorStationeryFlag" type="checkbox" value="/" />ขาดแคลนเครื่องเขียน</td></td>
-		<td colspan="2"><input name="poorUniformFlag" id="poorUniformFlag" type="checkbox" value="/" />ขาดแคลนเครื่องแบบ</td></td>
-	</tr>
-	<tr>
-	<td colspan="2"><input type="submit" value="submit"></td>
-	</tr>
-	</table>
-</form>
-</body>
-</html>
-	
+<?php
+
+echo "$school = " .$_POST["txtschool"];
+echo "$studentID = ".$_POST["txtstudentID"];
+echo "$empID = ".$_POST["txtempID"];
+echo "$class = ".$_POST["txtclass"];
+echo "$room = ".$_POST["txtroom"];
+echo "$Nstudent = ".$_POST["txtNstudent"];
+echo "$Lstudent = ".$_POST["txtLstudent"];
+echo "$travel = ".$_POST["txttravel"];
+echo "$beginTime = ".$_POST["txtbeginTime"];
+echo "$beginGravel = ".$_POST["txtbeginGravel"];
+echo "$beginpaved = ".$_POST["txtbeginpaved"];
+echo "$beginwater = ".$_POST["txtbeginwater"];
+echo "$endTime = ".$_POST["txtendTime"];
+echo "$endGraval = ".$_POST["txtendGravel"];
+echo "$endpaved = ".$_POST["txtendpaved"];
+echo "$endwater = ".$_POST["txtendwater"];
+
+echo $class ;
+?>

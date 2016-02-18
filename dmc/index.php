@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
 <style type="text/css">
@@ -36,6 +37,12 @@ session_start();
   		<input name="btnSubmit" type="submit" id="btnSubmit" value="Upload"></div></td>
   </tr>
 </table>
+<tr>
+    <td height="59"><br>- ไฟล์ที่อัพโหลดต้องนามสกุล .csv ดาวน์โหลดได้จาก ที่นี่ และ Encoding เป็น UTF-8</td>
+ </tr>
+<tr>
+    <td height="59"><br><br><br><br><br><br><br><br><?php include ("footer.php"); ?></td>
+</tr>
 </table>
 <?php
 }else{
@@ -48,4 +55,6 @@ mysql_close($Conn);
 </div>
 </form>
 </body>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </html>

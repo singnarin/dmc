@@ -19,6 +19,7 @@ $endHeight = $_POST["txtendHeight"];
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Real Time Data Managment</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div align="center">
@@ -66,7 +67,8 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		$strSQL .= " ORDER BY `schoolID` ASC";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
-<table border="1" bordercolor="#0000ff" style="border-collapse:collapse;" >
+<table class="table table-bordered" >
+<!--border="1" bordercolor="#0000ff" style="border-collapse:collapse;" >-->
 	<tr>
 		<th>ลำดับ</th>
 		<th>โรงเรียน</th>
@@ -105,5 +107,7 @@ mysql_close($Conn);
 ?>
 </table>
 </div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -67,7 +67,7 @@ session_start();
 mysql_close($Conn); 
 	?>
   <tr>
-    <td height="59"><?php include ("footer.php"); ?></td>
+    <td height="59"><br><br><br><br><br><br><br><?php include ("footer.php"); ?></td>
   </tr>
   </table>
 </center>
