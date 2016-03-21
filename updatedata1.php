@@ -106,6 +106,13 @@ mysql_query($sql_updatef) or die(mysql_error());
 $sql_updatec = "UPDATE tbc SET male = '".$cm."', female = '".$cw."' WHERE schoolid = '".$schoolid. "'";
 mysql_query($sql_updatec) or die(mysql_error());
 
+$check_status = mysql_query("SELECT * FROM tbstatus WHERE schoolid = '".$_SESSION['ses_username']."'");
+$num_status = mysql_num_rows($check_status);
+$Result = mysql_fetch_array($check_status);
+if($num_status > 0 && $Result['status'] == 0 ){
+	$sql_updatestatus = mysql_query("UPDATE `tbstatus` SET `status` = '1' WHERE `tbstatus`.`schoolid` = '".$schoolid."'")or die(mysql_error());
+}
+
 $message = "แก้ไขข้อมูลเสร็จเรียบร้อย";
 echo "<script type='text/javascript'>alert('$message');</script>";
 echo "<meta http-equiv='refresh' content='0;URL=viewdata.php'>";

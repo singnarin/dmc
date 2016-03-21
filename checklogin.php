@@ -5,9 +5,9 @@ $password="null";
 $_SESSION['ses_username']=null;
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 //กำหนดภาษาของเอกสารให้เป็น UTF-8
-$loginid = $_POST[loginid];
+$loginid = $_POST['loginid'];
 //ประกาศซตัวแปรชื่อ username โดยการรับค่ามาจากกล่อง username ที่หน้า Login
-$password = $_POST[password];
+$password = $_POST['password'];
 //ประกาศซตัวแปรชื่อ password โดยการรับค่ามาจากกล่อง password ที่หน้า Login
 if($loginid == "") {                    //ถ้ายังไม่ได้กรอกข้อมูลที่ชื่อผู้ใช้ให้ทำงานดังต่อไปนี้
 $message = "คุณยังไม่ได้ใส่ชื่อผู้ใช้ครับ";

@@ -27,7 +27,7 @@ session_start();
   if(obj) { 
    var url = "basicinfoReport.php"; 
    var area = document.getElementById("show") ; 
-   var params =  "txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&marriageStatusCode=" + document.getElementById("marriageStatusCode").value + "&nationCode=" + document.getElementById("nationCode").value + "&raceCode=" + document.getElementById("raceCode").value + "&religionCode=" + document.getElementById("religionCode").value + "&bloodCode=" + document.getElementById("bloodCode").value + "&parentFamilyRelation=" + document.getElementById("parentFamilyRelation").value + "&txtCategoryOri=" + document.getElementById("txtCategoryOri").value + "&txttambolOri=" + document.getElementById("txttambolOri").value + "&txtDistrictOri=" + document.getElementById("txtDistrictOri").value + "&txtProvinceOri=" + document.getElementById("txtProvinceOri").value ; 
+   var params =  "txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&marriageStatusCode=" + document.getElementById("marriageStatusCode").value + "&nationCode=" + document.getElementById("nationCode").value + "&raceCode=" + document.getElementById("raceCode").value + "&religionCode=" + document.getElementById("religionCode").value + "&bloodCode=" + document.getElementById("bloodCode").value + "&parentFamilyRelation=" + document.getElementById("parentFamilyRelation").value + "&txtCategoryOri=" + document.getElementById("txtCategoryOri").value + "&txttambolOri=" + document.getElementById("txttambolOri").value + "&txtDistrictOri=" + document.getElementById("txtDistrictOri").value + "&txtProvinceOri=" + document.getElementById("txtProvinceOri").value + "&txtbirthYear=" + document.getElementById("txtbirthYear").value + "&txtyearOld=" + document.getElementById("txtyearOld").value ; 
      
     obj.open("POST", url, true) ; 
     obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");  
@@ -58,13 +58,15 @@ session_start();
         document.getElementById("txtDistrictOri").value = '' ;
         document.getElementById("txtProvinceOri").value = '' ;
         document.getElementById("txtCategoryOri").value = '' ;
+        document.getElementById("txtbirthYear").value = '' ;
+        document.getElementById("txtyearOld").value = '' ;
      } 
     } 
   }   
   }
 
   function ExportData() { 
-   window.location =  "weightExport.php?txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&marriageStatusCode=" + document.getElementById("marriageStatusCode").value + "&nationCode=" + document.getElementById("nationCode").value + "&raceCode=" + document.getElementById("raceCode").value + "&religionCode=" + document.getElementById("religionCode").value + "&bloodCode=" + document.getElementById("bloodCode").value + "&parentFamilyRelation=" + document.getElementById("parentFamilyRelation").value + "&txtCategoryOri=" + document.getElementById("txtCategoryOri").value + "&txttambolOri=" + document.getElementById("txttambolOri").value + "&txtDistrictOri=" + document.getElementById("txtDistrictOri").value + "&txtProvinceOri=" + document.getElementById("txtProvinceOri").value ;  
+   window.location =  "weightExport.php?txtschool=" + document.getElementById("txtschool").value + "&txtstudentID=" + document.getElementById("txtstudentID").value + "&txtempID=" + document.getElementById("txtempID").value + "&txtclass=" + document.getElementById("txtclass").value + "&txtroom=" + document.getElementById("txtroom").value + "&txtNstudent=" + document.getElementById("txtNstudent").value + "&txtLstudent=" + document.getElementById("txtLstudent").value + "&marriageStatusCode=" + document.getElementById("marriageStatusCode").value + "&nationCode=" + document.getElementById("nationCode").value + "&raceCode=" + document.getElementById("raceCode").value + "&religionCode=" + document.getElementById("religionCode").value + "&bloodCode=" + document.getElementById("bloodCode").value + "&parentFamilyRelation=" + document.getElementById("parentFamilyRelation").value + "&txtCategoryOri=" + document.getElementById("txtCategoryOri").value + "&txttambolOri=" + document.getElementById("txttambolOri").value + "&txtDistrictOri=" + document.getElementById("txtDistrictOri").value + "&txtProvinceOri=" + document.getElementById("txtProvinceOri").value + "&txtbirthYear=" + document.getElementById("txtbirthYear").value + "&txtyearOld=" + document.getElementById("txtyearOld").value;  
   }
 </script>
 <style type="text/css">
@@ -136,6 +138,12 @@ include("css/stylesheet.css");
 		<td><input type="text" name="txtNstudent" id="txtNstudent" value=""/></td>
 		<td><div align="right">นามสกุล : </div></td>
 		<td><input type="text" name="txtLstudent" id="txtLstudent" value=""/></td>
+	</tr>
+	<tr>
+		<td><div align="right">ปีที่เกิด : </div></td>
+		<td><input type="text" name="txtbirthYear" id="txtbirthYear" value=""/></td>
+		<td><div align="right">อายุ : </div></td>
+		<td><input type="text" name="txtyearOld" id="txtyearOld" value=""/></td>
 	</tr>
 	<tr>
 		<td><div align="right">สถานภาพสมรสบิดามารดา : </div></td>

@@ -22,6 +22,8 @@ $txtCategoryOri = $_POST["txtCategoryOri"];
 $txttambolOri = $_POST["txttambolOri"];
 $txtDistrictOri = $_POST["txtDistrictOri"];
 $txtProvinceOri = $_POST["txtProvinceOri"];
+$txtbirthYear = $_POST["txtbirthYear"];
+$txtyearOld = $_POST["txtyearOld"];
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -87,8 +89,14 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		if($txtProvinceOri  !=''){
 			$strSQL .= " AND ProvinceOri LIKE '%".$txtProvinceOri ."%'";
 		}
+		if($txtbirthYear  !=''){
+			$strSQL .= " AND SUBSTRING( `birthday` , -4 ) = '".$txtbirthYear."'";
+		}
+		if($txtyearOld  !=''){
+			$strSQL .= " AND LEFT( curdate( ) , 4 ) + 543 - SUBSTRING( `birthday` , -4 ) = '".$txtyearOld."'";
+		}
 		
-		$strSQL .= " ORDER BY `schoolID` ASC";
+		$strSQL .= " ORDER BY `schoolID` ASC , `class` ASC ";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
 <table class="table table-bordered" >
@@ -102,6 +110,7 @@ $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 		<th rowspan="2">คำนำหน้าชื่อคำนำหน้าชื่อ</th>
 		<th rowspan="2">ชื่อชื่อ</th>
 		<th rowspan="2">นามสกุลนามสกุล</th>
+		<th rowspan="2">วันเกิด</th>
 		<th rowspan="2">สถานะภาพสมรสบิดามารดาสถานะภาพสมรสบิดามารดา</th>
 		<th rowspan="2">สัญชาติสัญชาติ</th>
 		<th rowspan="2">เชื้อชาติเชื้อชาติ</th>
@@ -131,6 +140,7 @@ while($objResult = mysql_fetch_array($objQuery))
 		<td><?php echo $objResult['Tstudent'];?></td>
 		<td><?php echo $objResult['Nstudent'];?></td>
 		<td><?php echo $objResult['Lstudent'];?></td>
+		<td><?php echo $objResult['birthday'];?></td>
 		<td><?php echo $objResult['status_parents'];?></td>
 		<td><?php echo $objResult['nationnal'];?></td>
 		<td><?php echo $objResult['nationnallity'];?></td>

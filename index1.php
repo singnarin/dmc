@@ -50,7 +50,8 @@ body{
 				</ul>
 			</div>
     	</td>
-    	<td><img src = "images/student.jpg"></td>
+    	<td><div align="center"> <a href="fileupload.php" class="btn btn-info" role="button">แบบรายงานสรุปรายจ่ายจริงงบประมาณรายจ่ายประจำปี พ.ศ. 2558</a></div></a>
+    	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><!--<img src = "images/student.jpg">--></td>
   </tr>
  		 <?php
 			}else{

@@ -47,7 +47,7 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 			$strSQL .= " AND bedroom LIKE '%".$bedroom."%' ";
 		}
 		
-		$strSQL .= " ORDER BY `schoolID` ASC";
+		$strSQL .= " ORDER BY `schoolID` ASC , `class` ASC ";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
 <table class="table table-bordered">

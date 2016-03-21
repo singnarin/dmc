@@ -18,9 +18,12 @@ session_start();
 		}else{ 
 			$check_status = mysql_query("SELECT * FROM contact WHERE schoolid = '".$_SESSION['ses_username']."'");
 			$num_status = mysql_num_rows($check_status);
-			if($num_status <=0) {
+			$Result = mysql_fetch_array($check_status);
+			if($num_status <=0 ) {
 				echo "<meta http-equiv='refresh' content='0;URL=adddata.php'>";
-			} else {
+			}else if($num_status > 0 && $Result['status'] == 0 ){
+				echo "<meta http-equiv='refresh' content='0;URL=editdata.php'>";
+			}else {
 				echo "<meta http-equiv='refresh' content='0;URL=viewdata.php'>";
 					}
 		}
