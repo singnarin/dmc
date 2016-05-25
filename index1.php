@@ -10,9 +10,12 @@ session_start();
 <title>Real Time Data Managment</title>
 <style type="text/css">
 body{
-		background: url('images/1970022.jpg') no-repeat center center fixed; 
-	}
-
+	background: url('images/background.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+  }
 <!--
 .style2 {font-size: 14px}
 -->
@@ -20,6 +23,7 @@ body{
   {
     background-color: #FFFFFF;
   }
+
 </style>
 </head>
 
@@ -29,7 +33,6 @@ body{
       if ($_SESSION['ses_username']!=""){ 
 ?>
 <div class="container">
-<div class="bg">
     <div class="row">
       <div class="span12"><img src="images/header.jpg"></div>
     </div>
@@ -37,7 +40,6 @@ body{
       <div class="span3"><?php include 'include/navbar.php';?></div>
       <div class="span9"><img src="images/student.jpg"></div>
     </div>
-</div>
 </div>
 <div class="container">
 <div class="row">

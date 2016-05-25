@@ -30,7 +30,6 @@ body{
   }
 </style>
 </head>
-
 <body>
 <div class="container">
  <div class="bg">
@@ -40,7 +39,7 @@ body{
        <img class="profile-img" src="images/user.png" alt="">
         <legend><div align="center">เข้าสู่ระบบ</div></legend>
           <form action="checklogin.php" method="post">
-            <input type="text" id="loginid" class="span4" name="loginid" placeholder="Username">
+            <input type="text" id="loginid" class="span4" name="loginid" placeholder="Username"><i class="glyphicon glyphicon-ok"></i>
             <input type="password" id="password" class="span4" name="password" placeholder="Password">  
             <button type="submit" name="submit" class="btn btn-info btn-block">เข้าสู่ระบบ</button>
           </form>    
