@@ -120,13 +120,18 @@ session_start();
 				</tr>
 				<?php 
 						$y=1;
-						$innerQuery = mysql_query("SELECT tbschool.`schoolid`,tbschool.`schoolname` FROM tbschool INNER JOIN file ON tbschool.`schoolid`!=file.`schoolid`   ORDER BY `tbschool`.`schoolid` ASC");
+						//$innerQuery = mysql_query("SELECT tbschool.`schoolid`,tbschool.`schoolname` FROM tbschool INNER JOIN file ON tbschool.`schoolid`!=file.`schoolid`   ORDER BY `tbschool`.`schoolid` ASC");
+						$innerQuery = mysql_query("SELECT * FROM tbschool LEFT JOIN file ON tbschool.`schoolid` = file.`schoolid` WHERE file.`schoolid` IS NULL ORDER BY `tbschool`.`schoolid` ASC");
 						while($innerResult = mysql_fetch_array($innerQuery))
 						{
 				?>
 				<tr>
 					<td><div align="center"><?php echo $y; $y++;?></div></td>
-					<td><div align="center"><?php echo $innerResult["schoolid"];?></div></td>
+					<?php
+						$sel_school1 = mysql_query("SELECT * FROM tbschool WHERE schoolname = '".$innerResult["schoolname"]."'" );
+						$schoolResult1 = mysql_fetch_array($sel_school1);
+					?>
+					<td><div align="center"><?php echo $schoolResult1["schoolid"];?></div></td>
 					<td><div align="left"><?php echo $innerResult["schoolname"];?></div></td>
 					<td><center></center></td>
 				</tr>

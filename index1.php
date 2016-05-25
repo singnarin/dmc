@@ -6,67 +6,54 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <title>Real Time Data Managment</title>
 <style type="text/css">
 body{
 		background: url('images/1970022.jpg') no-repeat center center fixed; 
 	}
-<?php include("include/button.css");?>
+
 <!--
 .style2 {font-size: 14px}
 -->
+.bg
+  {
+    background-color: #FFFFFF;
+  }
 </style>
 </head>
 
 <body>
 <center>
-
-  <table width="900"  border="0">
-  	<tr>
-    	<td colspan="2"><?php include("header.php"); ?></td>
-  	</tr>
-  		<?php
-			if ($_SESSION['ses_username']!=""){	
-		?>
-  	<tr>
-    	<td><div align = "top">
-      		<div id='cssmenu'>
-				<ul>
-   					<li><a href='index1.php'><span>Home</span></a></li>
-   					<li><a href='index2.php' target = "_blank" ><span>ข้อมูลจำนวนนักเรียน</span></a></li>
-   					<li class='last'><a href='contact/index.php' target = "_blank"><span>ข้อมูลผู้ประสานงานโรงเรียน</span></a></li>
-   						<?php
-   							if($_SESSION['ses_username']=="56010000"){	
-   								echo "<li class='last'><a href='dmc/index.php' target = \"_blank\"><span>ข้อมูลนักเรียนรายบุคคล</span></a></li>";
-   							}
-   						?>
-   					<li class='last'><a href='http://202.143.132.3/dataschool2559/index.php' target = "_blank"><span>ข้อมูลครู,บุคลากรการศึกษา</span></a></li>
-   					<li class='last'><a href='changpass.php' target = "_blank"><span>เปลี่ยนรหัสผ่าน</span></a></li>
-   					<li class='last'><a href='logout.php' ><span>ออกจากระบบ</span></a></li>
-   					<li class='last'><a href='#' target = "_blank"><span>&nbsp;</span></a></li>
-   					<li class='last'><a href='#' ><span>&nbsp;</span></a></li>
-   					
-				</ul>
-			</div>
-    	</td>
-    	<td><div align="center"> <a href="fileupload.php" class="btn btn-info" role="button">แบบรายงานสรุปรายจ่ายจริงงบประมาณรายจ่ายประจำปี พ.ศ. 2558</a></div></a>
-    	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><!--<img src = "images/student.jpg">--></td>
-  </tr>
- 		 <?php
-			}else{
-				$message = "ไม่สามารถทำงานได้ เนื่องจากยังไม่ได้ Login หรือไม่ผ่านการทดสอบสิทธิ์ในการเข้าใช้งาน";
-				echo "<script type='text/javascript'>alert('$message');</script>";
-				echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
-			} 
+<?php
+      if ($_SESSION['ses_username']!=""){ 
+?>
+<div class="container">
+<div class="bg">
+    <div class="row">
+      <div class="span12"><img src="images/header.jpg"></div>
+    </div>
+    <div class="row">
+      <div class="span3"><?php include 'include/navbar.php';?></div>
+      <div class="span9"><img src="images/student.jpg"></div>
+    </div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+      <div class="span12"><?php include 'include/footer.php';?></div>
+</div>
+</div>
+<?php
+      }else{
+        $message = "ไม่สามารถทำงานได้ เนื่องจากยังไม่ได้ Login หรือไม่ผ่านการทดสอบสิทธิ์ในการเข้าใช้งาน";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
+      } 
 mysql_close($Conn); 
 ?>
-  	<tr>
-    	<td height="59" colspan="2"><br><?php include ("footer.php"); ?></td>
-  	</tr>
-</table>
 </center>
-<script src="js/jquery.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

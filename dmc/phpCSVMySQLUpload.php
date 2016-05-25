@@ -13,15 +13,15 @@ session_start();
 
 if ($_SESSION['ses_username']!=""){	
 
-if ($_FILES["fileCSV"]["error"]>0){
-	$message = "ยังไม่ได้เลือกไฟล์ หรือเกิดข้อพิดพลาด โปรดตรวจสอบ";
+	if ($_FILES["fileCSV"]["error"]>0){
+			$message = "ยังไม่ได้เลือกไฟล์ หรือเกิดข้อพิดพลาด โปรดตรวจสอบ";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 			echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
-}else{
+	}else{
 
-move_uploaded_file($_FILES["fileCSV"]["tmp_name"],'D:\xampp\htdocs\dmc\dmc\Upload\\'.$_FILES["fileCSV"]["name"]); // Copy/Upload CSV
+move_uploaded_file($_FILES["fileCSV"]["tmp_name"],'/var/www/dmc/dmc/Upload/'.$_FILES["fileCSV"]["name"]); // Copy/Upload CSV
 
-$objCSV = fopen('Upload\\'.$_FILES["fileCSV"]["name"], "r");
+$objCSV = fopen('Upload/'.$_FILES["fileCSV"]["name"], "r");
 while (($objArr = fgetcsv($objCSV, 3000, ",")) !== FALSE) {
 
 	$sel_dmc = mysql_query("SELECT * FROM `dmc` WHERE `empID` = '".$objArr[2]."'");

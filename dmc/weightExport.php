@@ -69,7 +69,7 @@ $strSQL = "SELECT * FROM dmc WHERE 1 ";
 		if($beginHeight !=''and $endHeight !=''){
 			$strSQL .= " AND height BETWEEN ".$beginHeight." AND ".$endHeight."";
 		}
-		$strSQL .= " ORDER BY `schoolID` ASC , `class` ASC ";
+		$strSQL .= " ORDER BY `schoolID` ASC";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 ?>
 <table border="1" bordercolor="#0000ff" style="border-collapse:collapse;" >

@@ -62,7 +62,6 @@ session_start();
   }
 </script>
 <style type="text/css">
-
 <?php 
 include("include/button.css");
 include("css/stylesheet.css");
@@ -79,7 +78,7 @@ include("css/stylesheet.css");
 <?php
 		if ($_SESSION['ses_username']!=""){	
 ?> 
-<table width="900"  border="0" >
+<table width="900"  border="0">
    <tr>
     <td><?php include("header.php"); ?></td>
   </tr>

@@ -9,53 +9,46 @@ include("include/connect.php");
 <title>Real Time Data Managment</title>
 <style type="text/css">
 body{
-		background: url('images/1970022.jpg') no-repeat center center fixed; 
-	}
-<!--
-.style2 {font-size: 14px}
--->
+  background: url('images/background.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+  }
+  .profile-img {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+  }
+  .bg
+  {
+    background-color: #FFFFFF;
+  }
 </style>
 </head>
 
 <body>
-<center>
-  <table width="900"  border="0">
-    <tr>
-      <td><?php include("header.php"); ?></td>
-    </tr>
-    <tr>
-      <td><br><div align="center"><font color="White"><h4>เข้าสู่ระบบ</h4></font></div></td>
-    </tr>
-    <tr>
-      <td><form action="checklogin.php" method="post"><div align="center"><table width="529" border="0">
-        <tr>
-          <td width="103"><font color="White"><h4>รหัสโรงเรียน</h4></font></td>
-          <td width="200">:
-            <input class="input-large" placeholder="เช่น 5601_ _ _ _" type="text" name="loginid" size="30" /></td>
-          <td width="130"><span class="style2"></span></td>
-        </tr>
-        <tr>
-          <td><font color="White"><h4>รหัสผ่าน</h4></font></td>
-          <td>:
-            <input class="input-large" type="password" name="password" size="30" /></td>
-          <td><span class="style2"></span></td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td><div align="center"><input class="btn btn-primary" type="submit" value=" เข้าสู่ระบบ " /></div></td>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
-      </div></form></td>
-    </tr>
-    <tr>
-      <td height="125">&nbsp;</td>
-    </tr>
-    <tr>
-      <td height="59"><?php include ("footer.php"); ?></td>
-    </tr>
-  </table>
-</center>
+<div class="container">
+ <div class="bg">
+    <div class="row">
+      <div class="span12"><?php include("header.php"); ?></div>
+      <div class="span4 offset4 well">
+       <img class="profile-img" src="images/user.png" alt="">
+        <legend><div align="center">เข้าสู่ระบบ</div></legend>
+          <form action="checklogin.php" method="post">
+            <input type="text" id="loginid" class="span4" name="loginid" placeholder="Username">
+            <input type="password" id="password" class="span4" name="password" placeholder="Password">  
+            <button type="submit" name="submit" class="btn btn-info btn-block">เข้าสู่ระบบ</button>
+          </form>    
+      </div>
+    </div>
+ </div>
+ <?php include 'include/footer.php';?>
+</div>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
